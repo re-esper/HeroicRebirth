@@ -86,12 +86,15 @@ namespace ToW_Esper_Plugin
             if (mapTalkTypeNode == null) return true;
             if (Step >= mapTalkTypeNode.m_MapTalkNodeList.Count) return true;
             MapTalkNode mapTalkNode = mapTalkTypeNode.m_MapTalkNodeList[Step];
-            if (mapTalkNode.m_iNpcID == 100017 || mapTalkNode.m_iNpcID == 210002 || mapTalkNode.m_iNpcID == 200000 || mapTalkNode.m_iNpcID == 210001 || mapTalkNode.m_iNpcID == 199999 || mapTalkNode.m_iNpcID == 600069)
+            if (GlobalEx.hero.gender == 1)
             {
-                StringBuilder sb = new StringBuilder(mapTalkNode.m_strManager);
-                sb.Replace("师兄", "师姐");
-                mapTalkNode.m_strManager = sb.ToString();
-            }            
+                if (mapTalkNode.m_iNpcID == 100017 || mapTalkNode.m_iNpcID == 210002 || mapTalkNode.m_iNpcID == 200000 || mapTalkNode.m_iNpcID == 210001 || mapTalkNode.m_iNpcID == 199999 || mapTalkNode.m_iNpcID == 600069)
+                {
+                    StringBuilder sb = new StringBuilder(mapTalkNode.m_strManager);
+                    sb.Replace("师兄", "师姐");
+                    mapTalkNode.m_strManager = sb.ToString();
+                }
+            }
             __result = mapTalkNode.m_strManager;
             return false;
         }
