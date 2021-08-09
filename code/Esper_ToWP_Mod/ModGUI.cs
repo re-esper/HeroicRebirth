@@ -128,7 +128,6 @@ namespace ToW_Esper_Plugin
         }
         private void OnGUI()
         {
-#if (!DEBUG)
             if (!bInited)
             {
                 var lbl = UnityEngine.Object.FindObjectOfType<UILabel>();
@@ -141,58 +140,6 @@ namespace ToW_Esper_Plugin
             }
             if (bShowVersion) renderVersion();
             if (bShowCreatePlayerUI) renderCreatePlayerGUI();
-#else
-            renderDebugging();
-#endif
-        }
-        //static int routineID = 0;
-        private void renderDebugging()
-        {
-            sizeFactor = new Vector2(Screen.width / 1920.0f, Screen.height / 1080.0f);
-            GUI.skin.button.fontSize = Screen.height * 28 / 1000;
-            GUI.skin.textField.fontSize = Screen.height * 28 / 1000;
-            if (GUI.Button(makeRect(0, 20, 300, 42), "Fxxk!"))
-            {
-                var itemlist = Game.ItemData.GetItemList();
-                foreach (var data in itemlist)
-                {
-                    if (data.m_iItemType != 6) continue;
-                    if (data.m_CanUseiNpcIDList.IndexOf(GlobalEx.HeroID) != -1) BackpackStatus.m_Instance.AddPackItem(data.m_iItemID);
-                }
-
-
-                //NpcRandomEvent.SetNpcListDoSomething();
-                /*
-                var unit = UnitControl.instance.FindUnit(GlobalEx.HeroID);
-                if (unit != null)
-                {
-                    unit.movePerTurn = 1000;
-                    unit.attackPerTurn = 1000;
-                    unit.moveRemain = unit.GetMovePerTurn();
-                    unit.attackRemain = unit.GetAttackPerTurn();
-                    unit.SP = unit.fullSP;
-                    //var list = Game.RoutineNewData.GetRoutineList();
-                    //unit.abilityIDList[0] = routineID;
-                    //unit.abilityIDList.Clear();
-                    //for (int i = 0; i < 6; i++)
-                    //{
-                    //    unit.abilityIDList.Add(list[routineID + i].m_iRoutineID);
-                    //}
-                    Utils.InvokeMethod(unit, "InitAbility");
-                }
-                unit = UnitControl.instance.FindUnit(610172);
-                if (unit != null)
-                {
-                    unit.HP = 1;
-                }*/
-                //TeamStatus.m_Instance.CheckMovieAndPlay(204001008);                
-            }
-            //var rIDstr = GUI.TextField(makeRect(320, 20, 200, 42), routineID.ToString());
-            //routineID = Convert.ToInt32(rIDstr);
-            /*if (GUI.Button(makeRect(320, 20, 300, 42), "+++"))
-            {
-                routineID += 6;
-            }*/
         }
         private void renderVersion()
         {
@@ -201,50 +148,7 @@ namespace ToW_Esper_Plugin
             GUI.skin.label.fontSize = Screen.height * 20 / 1000;
             GUI.skin.label.normal.textColor = new Color(1, 1, 1);
             GUI.Label(makeRect(20, 1040, 400, 40), GlobalEx.mod.version);
-
-            /*if (GUI.Button(makeRect(0, 1000, 400, 40), GlobalEx.mod.version))
-            {
-                bShowDebugWeapon = !bShowDebugWeapon;
-                angle = GlobalEx.weaponobj.transform.localEulerAngles;
-                pos = GlobalEx.weaponobj.transform.localPosition;
-            }
-            if (bShowDebugWeapon)
-            {
-                GUILayout.BeginArea(new Rect(0, 0, 600, 1080));
-                GUILayout.BeginVertical();
-                for (int i = 0; i < 3; ++i)
-                {
-                    GUILayout.BeginHorizontal();
-                    GUILayout.Label(string.Format("{0:0.00}", angle[i]));
-                    angle[i] = GUILayout.HorizontalSlider(angle[i], 0, 360);
-                    GUILayout.EndHorizontal();
-                }
-                for (int i = 0; i < 3; ++i)
-                {
-                    GUILayout.BeginHorizontal();
-                    GUILayout.Label(string.Format("{0:0.00}", pos[i]));
-                    pos[i] = GUILayout.HorizontalSlider(pos[i], -0.4f, 0.4f);
-                    GUILayout.EndHorizontal();
-                }                
-                GUILayout.EndVertical();
-                GUILayout.EndArea();
-                if (angle != oangle)
-                {
-                    oangle = angle;
-                    GlobalEx.weaponobj.transform.localEulerAngles = angle;
-                }
-                if (pos != opos)
-                {
-                    opos = pos;
-                    GlobalEx.weaponobj.transform.localPosition = pos;
-                }
-            }*/
         }
-        /*private bool bShowDebugWeapon = false;
-        private Vector3 angle = new Vector3();
-        private Vector3 oangle = new Vector3();
-        private Vector3 pos = new Vector3();
-        private Vector3 opos = new Vector3();*/
 
         private void renderCreatePlayerGUI()
         {
