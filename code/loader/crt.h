@@ -16,7 +16,7 @@ inline size_t wcslen(wchar_t const* str) {
 }
 
 #pragma function(memset)
-inline void* memset(void* dst, int c, size_t n) {
+void* memset(void* dst, int c, size_t n) {
     char* d = dst;
     while (n--)
         *d++ = (char)c;

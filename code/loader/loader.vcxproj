@@ -153,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="crt.h" />
-    <ClInclude Include="hook.h" />
     <ClInclude Include="mono.h" />
     <ClInclude Include="proxy.h" />
     <ClInclude Include="utils.h" />

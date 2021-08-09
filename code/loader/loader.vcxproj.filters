@@ -25,7 +25,6 @@
     <ClInclude Include="utils.h" />
     <ClInclude Include="proxy.h" />
     <ClInclude Include="mono.h" />
-    <ClInclude Include="hook.h" />
     <ClInclude Include="crt.h" />
   </ItemGroup>
 </Project>

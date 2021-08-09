@@ -7,10 +7,10 @@
 //#define _VERBOSE
 
 #include "utils.h"
+#include "crt.h"
 
 #include "proxy.h"
 #include "mono.h"
-#include "hook.h"
 
 void invoke(void* domain)
 {
