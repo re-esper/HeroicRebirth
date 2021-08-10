@@ -236,6 +236,7 @@ namespace ToW_Esper_Plugin
         }
         public static void RumorToFile(bool next, string format, params object[] args)
         {
+#if DEBUG
             if (rumorStreamWriter == null)
             {
                 var rumorFile = new FileStream("npc_rumors.txt", FileMode.Create);
@@ -247,6 +248,7 @@ namespace ToW_Esper_Plugin
             sw.Write(string.Format(format, args));
             sw.Write("\n");
             sw.Flush();
+#endif
         }
         private static StreamWriter rumorStreamWriter = null;
         private static StreamWriter rumorStreamWriter2 = null;
