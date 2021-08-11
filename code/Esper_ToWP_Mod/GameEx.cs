@@ -308,6 +308,10 @@ namespace ToW_Esper_Plugin
                 if (i == GlobalEx.hero.weapon) continue;
                 blockItems.AddRange(GlobalEx.mod.martials[i].spec_items);
             }
+            foreach (int iItemID in GlobalEx.mod.martials[GlobalEx.hero.weapon].spec_items)
+            {
+                blockItems.Remove(iItemID);
+            }
             foreach (var node in itemlist)
             {
                 if (blockItems.IndexOf(node.m_iItemID) != -1) node.m_iLock = 1;
