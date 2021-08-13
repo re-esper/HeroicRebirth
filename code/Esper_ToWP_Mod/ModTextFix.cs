@@ -36,6 +36,7 @@ namespace ToW_Esper_Plugin
             sb.Replace("{martial}", GlobalEx.hero_martial);
             sb.Replace("{name1}", GlobalEx.hero.name1);
             sb.Replace("{name2}", GlobalEx.hero.name2);
+            sb.Replace("{senior}", GlobalEx.hero.gender == 0 ? "师兄" : "师姐");
             value = sb.ToString();
         }
     }
