@@ -57,16 +57,6 @@ namespace ToW_Esper_Plugin
                     sb.Replace("师兄", "师姐");
                     mapTalkNode.m_strManager = sb.ToString();
                 }
-                else if (mapTalkNode.m_iNpcID == 210001)
-                {
-                    StringBuilder sb = new StringBuilder(mapTalkNode.m_strManager);
-                    sb.Replace("师兄弟", "师姐弟");
-                    if (mapTalkNode.m_strManager.IndexOf("阿棘") != -1)
-                    {
-                        sb.Replace("师兄", "师姐");
-                    }
-                    mapTalkNode.m_strManager = sb.ToString();
-                }
                 else if (mapTalkNode.m_iNpcID == 100019)
                 {
                     StringBuilder sb = new StringBuilder(mapTalkNode.m_strManager);
