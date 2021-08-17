@@ -326,9 +326,20 @@ namespace ToW_Esper_Plugin
         }
         public static void FixGameStaticData2()
         {
-            // 主角无语音
+            // 主角语音
             var herodata = NPC.m_instance.GetCharacterData(GlobalEx.HeroID);
-            if (herodata != null) herodata.sVoicList.Clear();
+            if (herodata != null)
+            {
+                herodata.sVoicList.Clear();
+                var voicestr = GlobalEx.hero.gender == 0 ? GlobalEx.mod.male_voices : GlobalEx.mod.female_voices;
+                if (voicestr == null) voicestr = "";
+                var voices = voicestr.Split(',');
+                Console.WriteLine(Utils.ToJSON(voices));
+                foreach(var voice in voices)
+                {
+                    herodata.sVoicList.Add(voice);
+                }
+            }
         }
         public static void CreateModel(string sModelPrefab)
         {

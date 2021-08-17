@@ -14,12 +14,14 @@ namespace ToW_Esper_Plugin
         public string male_nick;
         public string male_desc;
         public int[] male_talents;
+        public string male_voices;
         public ModBattleActorData[] male_battle;
         public string female_model;
         public string[] female_heads;
         public string female_nick;
         public string female_desc;
         public int[] female_talents;
+        public string female_voices;
         public ModBattleActorData[] female_battle;
         public ModMartialData[] martials;
         public Dictionary<int, int> shop_limits;
