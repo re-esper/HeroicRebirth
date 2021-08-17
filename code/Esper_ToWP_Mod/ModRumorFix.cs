@@ -49,7 +49,12 @@ namespace ToW_Esper_Plugin
                         // 练四维 4 点
                         int point = 4;
                         int[] attr = new int[] { CD.iStr, CD.iCon, CD.iInt, CD.iDex };
-                        int[] attrmax = new int[] { CD.iMaxStr, CD.iMaxCon, CD.iMaxInt, CD.iMaxDex };
+                        int[] attrmax = new int[] {
+                            CD._TotalProperty.Get(CharacterData.PropertyType.StrengthMax),
+                            CD._TotalProperty.Get(CharacterData.PropertyType.ConstitutionMax),
+                            CD._TotalProperty.Get(CharacterData.PropertyType.IntelligenceMax),
+                            CD._TotalProperty.Get(CharacterData.PropertyType.DexterityMax)
+                        };
                         while (point > 0)
                         {
                             if (attr[0] >= attrmax[0] && attr[1] >= attrmax[1] && attr[2] >= attrmax[2] && attr[3] >= attrmax[3]) break;                            
@@ -190,7 +195,10 @@ namespace ToW_Esper_Plugin
         }
         private static bool IsNPCAttributeFull(CharacterData CD)
         {
-            return CD.iStr == CD.iMaxStr && CD.iCon == CD.iMaxCon && CD.iInt == CD.iMaxInt && CD.iDex == CD.iMaxDex;
+            return CD.iStr == CD._TotalProperty.Get(CharacterData.PropertyType.StrengthMax)
+                && CD.iCon == CD._TotalProperty.Get(CharacterData.PropertyType.ConstitutionMax)
+                && CD.iInt == CD._TotalProperty.Get(CharacterData.PropertyType.IntelligenceMax)
+                && CD.iDex == CD._TotalProperty.Get(CharacterData.PropertyType.DexterityMax);
         }
         private static bool IsNPCPracticeDone(CharacterData CD)
         {

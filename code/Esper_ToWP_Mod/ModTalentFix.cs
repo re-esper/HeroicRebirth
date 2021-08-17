@@ -110,7 +110,12 @@ namespace ToW_Esper_Plugin
                     {
                         int point = rewardattr;
                         int[] attr = new int[] { npc.iStr, npc.iCon, npc.iInt, npc.iDex };
-                        int[] attrmax = new int[] { npc.iMaxStr, npc.iMaxCon, npc.iMaxInt, npc.iMaxDex };
+                        int[] attrmax = new int[] {
+                            npc._TotalProperty.Get(CharacterData.PropertyType.StrengthMax),
+                            npc._TotalProperty.Get(CharacterData.PropertyType.ConstitutionMax),
+                            npc._TotalProperty.Get(CharacterData.PropertyType.IntelligenceMax),
+                            npc._TotalProperty.Get(CharacterData.PropertyType.DexterityMax)
+                        };
                         while (point > 0)
                         {
                             if (attr[0] >= attrmax[0] && attr[1] >= attrmax[1] && attr[2] >= attrmax[2] && attr[3] >= attrmax[3])
